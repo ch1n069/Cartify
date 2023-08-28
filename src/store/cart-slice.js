@@ -23,6 +23,16 @@ createSlice({
 
       //   check if item exists in our items array
     },
-    removeFromCart() {},
+    removeFromCart(state, action) {
+      const id = action.payload.id;
+      const existingItem = state.items.find((item) => item.id === id);
+      if (existingItem.quantity === 1) {
+        state.items = state.items.filter((item) => item.id !== id);
+      } else {
+        existingItem.quantity--;
+        existingItem.totalAmount =
+          existingItem.totalAmount - existingItem.price;
+      }
+    },
   },
 });
