@@ -1,3 +1,6 @@
-import { configureStore } from "react-redux";
+import { configureStore } from "@reduxjs/toolkit";
+import toggleCart from "./ui-slice";
+// creating
+const store = configureStore({ reducers: { toggleCart: toggleCart.reducer } });
 
-const store = configureStore;
+export default store;
